@@ -1,7 +1,6 @@
 # LLS: Local Learning Rule for Deep Neural Networks Inspired by Neural Activity Synchronization
 
-This source code implements LLS, a local learning rule for training deep neural networks (DNNs), and replicates the experimental results obtained on the MNIST, FashionMNIST, CIFAR10, CIFAR100, TinyIMAGENET, IMAGENETTE, and Visual Wake Words (VWW) datasets. Its primary purpose is to aid in understanding the methodology and reproduce essential results. Please note that this code is provided as supplementary material for the NeurIPS 2024 review process.
-
+This source code implements LLS, a local learning rule for training deep neural networks (DNNs), and replicates the experimental results obtained on the MNIST, FashionMNIST, CIFAR10, CIFAR100, TinyIMAGENET, IMAGENETTE, and Visual Wake Words (VWW) datasets. Its primary purpose is to aid in understanding the methodology and reproduce essential results. 
 ## How to Use
 
 1. Install the required dependencies listed in `requirements.txt`. 

@@ -8,22 +8,22 @@ import numpy as np
 __all__ = ["LLS_layer", "LinearBlock", "ConvBlock", "ConvDWBlock"]
 
 
-# def generate_frequency_matrix(num_rows, num_cols, min_freq=50, max_freq=2000, freq=None):
-#     if freq is None:
-#         frequencies = torch.linspace(min_freq, max_freq, num_rows).unsqueeze(1).cuda()
-#     else:
-#         frequencies = freq
-#     # phases = torch.randn(num_rows, 1) * 2 * 3.14159
-#     t = torch.arange(num_cols).float().unsqueeze(0).cuda()
-#     sinusoids = torch.sin(frequencies * t )
-#     return sinusoids
-
-def generate_frequency_matrix(num_rows, num_cols, min_freq=100, max_freq=2000, freq=None):
-    frequencies = torch.linspace(min_freq, max_freq, num_rows).unsqueeze(1)
+def generate_frequency_matrix(num_rows, num_cols, min_freq=50, max_freq=2000, freq=None):
+    if freq is None:
+        frequencies = torch.linspace(min_freq, max_freq, num_rows).unsqueeze(1).cuda()
+    else:
+        frequencies = freq
     # phases = torch.randn(num_rows, 1) * 2 * 3.14159
-    t = torch.arange(num_cols).float().unsqueeze(0)
-    sinusoids = torch.cos(np.pi*frequencies * (t + 0.5)/num_cols)
+    t = torch.arange(num_cols).float().unsqueeze(0).cuda()
+    sinusoids = torch.sin(frequencies * t )
     return sinusoids
+
+# def generate_frequency_matrix(num_rows, num_cols, min_freq=100, max_freq=2000, freq=None):
+#     frequencies = torch.linspace(min_freq, max_freq, num_rows).unsqueeze(1)
+#     # phases = torch.randn(num_rows, 1) * 2 * 3.14159
+#     t = torch.arange(num_cols).float().unsqueeze(0)
+#     sinusoids = torch.cos(np.pi*frequencies * (t + 0.5)/num_cols)
+#     return sinusoids
 
 def compute_LocalLosses(activation, labels, local_classifier, temperature=1, label_smoothing=0.0, act_size=8):
     batch_size = activation.size(0)
@@ -238,7 +238,6 @@ class LLS_layer(nn.Module):
                 else:
                     feedback = torch.matmul(self.modulation, self.feedback)
                 loss = compute_LocalLosses(out, labels, feedback, temperature, label_smoothing, act_size=self.pooling_size)
-
 
             elif self.training_mode == "LocalLosses":
                 temperature = self.temperature

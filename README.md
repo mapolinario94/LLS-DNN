@@ -37,8 +37,8 @@ If you use this code in your research, please cite our paper:
 ```bibtex
 @article{apolinario2024llslocallearningrule,
       title={LLS: Local Learning Rule for Deep Neural Networks Inspired by Neural Activity Synchronization}, 
-      author={Marco Paul E. Apolinario and Arani Roy and Kaushik Roy},
-      journal={arXiv preprint arXiv:2306.15220},
+      author={Marco P. E. Apolinario and Arani Roy and Kaushik Roy},
+      journal={arXiv preprint arXiv:2405.15868},
       year={2024},
       eprint={2405.15868},
       archivePrefix={arXiv},
